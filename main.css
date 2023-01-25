@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.card {
+  flex-basis: 26%;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+  justify-content: space-around;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.btn {
+  flex-basis: 20%;
+}
