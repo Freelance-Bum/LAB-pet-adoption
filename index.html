@@ -19,6 +19,7 @@
   integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
   crossorigin="anonymous"
 ></script>
+  <!--  SORTING BUTTONS -->
   <div id = buttons>
     <button class="btn btn-primary" id="showCats">Show Cats</button>
     <button class="btn btn-secondary" id="showDogs">Show Dogs</button>
@@ -26,6 +27,66 @@
     <button class="btn btn-danger" id="showAll">Show All</button>
   </div>
   <br>
+  <!-- ADD PET CARD FORM -->
+  <form>
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Name"
+        required
+      />
+      <label for="floatingInput">Name</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="color"
+        placeholder="Color"
+        required
+      />
+      <label for="floatingInput">Color</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        type="text"
+        class="form-control"
+        id="specialSkill"
+        placeholder="specialSkill"
+        required
+      />
+      <label for="floatingInput">Special Skill</label>
+    </div>
+
+    <div class="form-floating">
+      <select class="form-select" id="type">
+        <option value="cat">Cat</option>
+        <option value="dog">Dog</option>
+        <option value="dino">Dino</option>
+      </select>
+      <label for="floatingSelect">Choose Type of Animal</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input
+        type="url"
+        class="form-control"
+        id="imageUrl"
+        placeholder="image"
+        required
+      />
+      <label for="floatingInput">Image URL</label>
+    </div>
+    <button type="submit" class="btn btn-success" id="form-submit">
+      Add Pet
+    </button>
+  </form>
+  <br>
+  <!-- CARDS DISPLAYED BELOW -->
   <div class="container">
   
 </div>
