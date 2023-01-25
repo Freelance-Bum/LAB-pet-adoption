@@ -307,3 +307,30 @@ showDinoButton.addEventListener("click", () => {
 showAllButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
+
+const createMember = (event) => {
+  event.preventDefault();
+
+  const petId = pets.length + 1;
+  const name = document.querySelector("#name");
+  const color = document.querySelector("#color");
+  const specialSkill = document.querySelector("#specialSkill");
+  const type = document.querySelector("#type");
+  const image = document.querySelector("#imageUrl");
+
+  const newMember = {
+    id: petId,
+    name: name.value,
+    color: color.value,
+    specialSkill: specialSkill.value,
+    type: type.value,
+    imageUrl: image.value
+  };
+
+  pets.push(newMember);
+  //console.log(pets[pets.length].id);
+  cardsOnDom(pets);
+};
+
+const submitButton = document.querySelector("#form-submit");
+submitButton.addEventListener("click", createMember);
