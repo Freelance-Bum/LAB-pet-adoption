@@ -5,7 +5,7 @@ const pets = [
       color: "Green",
       specialSkill: "Gives sincere apologies.",
       type: "cat",
-      imageUrl: "http://kittentoob.com/wp-content/uploads/2015/06/funny-cat-with-a-towel.jpg",
+      imageUrl: "http://kittentoob.com/wp-content/uploads/2015/06/funny-cat-with-a-towel.jpg"
     },
     {
         id: 2,
@@ -13,7 +13,8 @@ const pets = [
       color: "Brown",
       specialSkill: "Just picks the tomatoes off of a sandwich instead of requesting a whole new sandwich.",
       type: "dino",
-      imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg",
+      imageUrl: "http://www.jozilife.co.za/wp-content/uploads/The-Dino-Expo.jpg"
+      //imageUrl: "https://source.unsplash.com/random/600x400/?Dinosaur"
     },
     {
       id: 3,
@@ -240,3 +241,69 @@ const pets = [
       imageUrl: "http://lsae2.iypcdn.com/static//modules/uploads/photos/language1/dino-live-22.jpg?119"
     }
   ];
+
+const renderToDom = (divID, htmlToRender) => {
+  const selectedDiv = document.querySelector(divID);
+  selectedDiv.innerHTML = htmlToRender;
+};
+//const targetingApp = document.querySelector(".container");
+const cardsOnDom = (array) => {
+  let domString = "";
+  for (let i = 0; i < array.length; i++) {
+    domString += `<div class="card" style="width: 18rem;">
+    <h5 class="card-title">${array[i].name}</h5>
+    <img src="${array[i].imageUrl}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <p class="card-text">${array[i].color}</p>
+      <p class="card-text">${array[i].specialSkill}</p>
+      <p class="card-text">${array[i].type}</p>
+      <button class="btn btn-danger" id="delete--${array[i].id}">Delete</button>
+    </div>
+  </div>`;
+  }
+  renderToDom(".container", domString);
+}
+
+cardsOnDom(pets);
+
+const filter = (array, petType) => {
+  const typeArray = [];
+
+  array.forEach((item) => {
+    if (item.type === petType) {
+      typeArray.push(item);
+    }
+  });
+
+  // for (const member of array) {
+  //   if (member.type === petType) {
+  //     typeArray.push(member);
+  //   }
+  // }
+
+  return typeArray;
+};
+//targetingApp.innerHTML = domString;
+const showCatsButton = document.querySelector("#showCats");
+const showDogsButton = document.querySelector("#showDogs");
+const showDinoButton = document.querySelector("#showDino");
+const showAllButton = document.querySelector("#showAll");
+
+showCatsButton.addEventListener("click", () => {
+  const catsMembers = filter(pets, "cat");
+  cardsOnDom(catsMembers);
+});
+
+showDogsButton.addEventListener("click", () => {
+  const dogsMembers = filter(pets, "dog");
+  cardsOnDom(dogsMembers);
+});
+
+showDinoButton.addEventListener("click", () => {
+  const dinoMembers = filter(pets, "dino");
+  cardsOnDom(dinoMembers);
+});
+
+showAllButton.addEventListener("click", () => {
+  cardsOnDom(pets);
+});
