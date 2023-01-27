@@ -264,8 +264,6 @@ const cardsOnDom = (array) => {
   renderToDom(".container", domString);
 }
 
-cardsOnDom(pets);
-
 const filter = (array, petType) => {
   const typeArray = [];
 
@@ -334,3 +332,24 @@ const createMember = (event) => {
 
 const submitButton = document.querySelector("#form-submit");
 submitButton.addEventListener("click", createMember);
+
+const appDiv = document.querySelector(".container");
+
+appDiv.addEventListener("click", (event) => {
+
+  if (event.target.id.includes("delete")) {
+
+    const [throwAway, memberId] = event.target.id.split("--");
+
+    const indexOfMember = pets.findIndex(
+      (object) => object.id === Number(memberId)
+    );
+
+    pets.splice(indexOfMember, 1);
+  }
+  console.log(event.target.id);
+
+  cardsOnDom(pets);
+});
+
+cardsOnDom(pets);
