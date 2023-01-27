@@ -264,8 +264,6 @@ const cardsOnDom = (array) => {
   renderToDom(".container", domString);
 }
 
-cardsOnDom(pets);
-
 const filter = (array, petType) => {
   const typeArray = [];
 
@@ -307,3 +305,51 @@ showDinoButton.addEventListener("click", () => {
 showAllButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
+
+const createMember = (event) => {
+  event.preventDefault();
+
+  const petId = pets.length + 1;
+  const name = document.querySelector("#name");
+  const color = document.querySelector("#color");
+  const specialSkill = document.querySelector("#specialSkill");
+  const type = document.querySelector("#type");
+  const image = document.querySelector("#imageUrl");
+
+  const newMember = {
+    id: petId,
+    name: name.value,
+    color: color.value,
+    specialSkill: specialSkill.value,
+    type: type.value,
+    imageUrl: image.value
+  };
+
+  pets.push(newMember);
+  //console.log(pets[pets.length].id);
+  cardsOnDom(pets);
+};
+
+const submitButton = document.querySelector("#form-submit");
+submitButton.addEventListener("click", createMember);
+
+const appDiv = document.querySelector(".container");
+
+appDiv.addEventListener("click", (event) => {
+
+  if (event.target.id.includes("delete")) {
+
+    const [throwAway, memberId] = event.target.id.split("--");
+
+    const indexOfMember = pets.findIndex(
+      (object) => object.id === Number(memberId)
+    );
+
+    pets.splice(indexOfMember, 1);
+  }
+  console.log(event.target.id);
+
+  cardsOnDom(pets);
+});
+
+cardsOnDom(pets);
